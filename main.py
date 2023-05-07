@@ -9,12 +9,6 @@ model = hub.load('https://tfhub.dev/google/movenet/multipose/lightning/1')
 movenet = model.signatures['serving_default']
 
 # Helper Functions:
-# Function to loop through each person detected and render:
-def loop_through_people(frame, keypoints_with_scores, edges, confidence_threshold):
-    for person in keypoints_with_scores:
-        draw_connections(frame, person, edges, confidence_threshold)
-        draw_keypoints(frame, person, confidence_threshold)
-
 # Drawing The Keypoints:
 def draw_keypoints(frame, keypoints, confidence_threshold):
     y, x, c = frame.shape
@@ -59,6 +53,12 @@ def draw_connections(frame, keypoints, edges, confidence_threshold):
 
         if (c1 > confidence_threshold) & (c2 > confidence_threshold):
             cv2.line(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 0, 255), 4)
+ 
+# Function to loop through each person detected and render:
+def loop_through_people(frame, keypoints_with_scores, edges, confidence_threshold):
+    for person in keypoints_with_scores:
+        draw_connections(frame, person, edges, confidence_threshold)
+        draw_keypoints(frame, person, confidence_threshold)
 
 # Making Detections:
 cap = cv2.VideoCapture('TestVideo.mp4')
