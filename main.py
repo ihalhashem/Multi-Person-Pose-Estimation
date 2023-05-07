@@ -9,7 +9,7 @@ model = hub.load('https://tfhub.dev/google/movenet/multipose/lightning/1')
 movenet = model.signatures['serving_default']
 
 # Helper Functions:
-# Function to loop through each person detected and render
+# Function to loop through each person detected and render:
 def loop_through_people(frame, keypoints_with_scores, edges, confidence_threshold):
     for person in keypoints_with_scores:
         draw_connections(frame, person, edges, confidence_threshold)
