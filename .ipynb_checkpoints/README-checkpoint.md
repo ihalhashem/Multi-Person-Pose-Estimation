@@ -1,2 +1,0 @@
-# MUlti-Person Pose Estimation
- This repository contains a multi-person pose estimation project that utilizes the state-of-the-art MoveNet architecture to detect and track human poses in images and videos. MoveNet is a lightweight and efficient deep learning model that can perform accurate and real-time pose estimation on multiple people simultaneously, making it an ideal choice for a wide range of applications.
