@@ -17,7 +17,7 @@ def draw_keypoints(frame, keypoints, confidence_threshold):
     for kp in shaped:
         ky, kx, kp_conf = kp
         if kp_conf > confidence_threshold:
-            cv2.circle(frame, (int(kx), int(ky)), 6, (0, 255, 0), -1)
+            cv2.circle(frame, (int(kx), int(ky)), 5, (0, 255, 0), -1)
 
 # Drawing The Edges:
 edges = {
@@ -72,7 +72,7 @@ while cap.isOpened():
     success, img = cap.read()
 
     # resizing the image:
-    image = tf.cast(tf.image.resize_with_pad(tf.expand_dims(img, axis=0), 256, 512), dtype=tf.int32)
+    image = tf.cast(tf.image.resize_with_pad(tf.expand_dims(img, axis=0), 352, 640), dtype=tf.int32)
 
     # detection:
     results = movenet(image)
